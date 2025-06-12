@@ -3,6 +3,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import quizRoutes from './routes/quiz.js';
+import Question from './models/Question.js';
+import { questions } from './data/questions.js';
 
 dotenv.config();
 
@@ -17,10 +19,22 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// MongoDB Connection
+// MongoDB Connection and Seeding
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/taylor-swift-quiz';
 mongoose.connect(MONGODB_URI)
-  .then(() => console.log('MongoDB connected successfully'))
+  .then(async () => {
+    console.log('MongoDB connected successfully');
+    
+    // Check if questions exist
+    const count = await Question.countDocuments();
+    if (count === 0) {
+      // If no questions exist, seed the database
+      await Question.insertMany(questions);
+      console.log('Database seeded with questions');
+    } else {
+      console.log('Questions already exist in database');
+    }
+  })
   .catch((err) => console.error('MongoDB connection error:', err));
 
 // Routes
