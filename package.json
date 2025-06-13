@@ -1,0 +1,14 @@
+{
+  "name": "taylor-swift-quiz",
+  "version": "1.0.0",
+  "description": "Taylor Swift Lyrics Quiz Game",
+  "scripts": {
+    "start": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "npm run start",
+    "setup": "cd backend && npm run clear-db && npm run fetch-lyrics && npm run fix-db"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 

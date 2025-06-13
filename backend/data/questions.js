@@ -1,72 +1,277 @@
 export const questions = [
+  // Easy (Difficulty 1)
   {
-    lyric: "Cause baby I could build a castle out of all the bricks they threw at me",
-    missingWord: "castle",
-    choices: ["castle", "house", "fortress", "wall"],
-    songTitle: "New Romantics",
-    album: "1989"
+    id: 1,
+    lyric: "I'm the problem, it's me",
+    missingWord: "problem",
+    choices: ["problem", "answer", "solution", "question"],
+    songTitle: "Anti-Hero",
+    album: "Midnights",
+    difficulty: 1
   },
   {
-    lyric: "Are we out of the woods yet are we in the clear yet",
-    missingWord: "woods",
-    choices: ["dark", "woods", "clear", "storm"],
-    songTitle: "Out of the Woods",
-    album: "1989"
+    id: 2,
+    lyric: "Meet me at midnight",
+    missingWord: "midnight",
+    choices: ["midnight", "sunset", "dawn", "dusk"],
+    songTitle: "Lavender Haze",
+    album: "Midnights",
+    difficulty: 1
   },
   {
-    lyric: "Cause I knew you were trouble when you walked in",
-    missingWord: "trouble",
-    choices: ["perfect", "trouble", "different", "special"],
-    songTitle: "I Knew You Were Trouble",
-    album: "Red"
+    id: 3,
+    lyric: "We never go out of style",
+    missingWord: "style",
+    choices: ["style", "fashion", "trend", "mode"],
+    songTitle: "Style",
+    album: "1989",
+    difficulty: 1
   },
   {
-    lyric: "Baby now we got bad blood, you know it used to be mad love",
-    missingWord: "mad",
-    choices: ["true", "pure", "mad", "real"],
-    songTitle: "Bad Blood",
-    album: "1989"
+    id: 4,
+    lyric: "I'm feeling 22",
+    missingWord: "22",
+    choices: ["22", "23", "24", "25"],
+    songTitle: "22",
+    album: "Red",
+    difficulty: 1
   },
   {
-    lyric: "I'm dancing on my own, I make the moves up as I go",
-    missingWord: "moves",
-    choices: ["moves", "steps", "dance", "way"],
+    id: 5,
+    lyric: "Shake it off",
+    missingWord: "shake",
+    choices: ["shake", "dance", "move", "jump"],
     songTitle: "Shake It Off",
-    album: "1989"
+    album: "1989",
+    difficulty: 1
   },
   {
-    lyric: "Are you ready for it? Baby, let the games begin",
-    missingWord: "games",
-    choices: ["fun", "games", "party", "show"],
-    songTitle: "...Ready For It?",
-    album: "reputation"
+    id: 6,
+    lyric: "Welcome to New York",
+    missingWord: "New York",
+    choices: ["New York", "Los Angeles", "Chicago", "Miami"],
+    songTitle: "Welcome to New York",
+    album: "1989",
+    difficulty: 1
   },
   {
-    lyric: "I've got a blank space baby, and I'll write your name",
-    missingWord: "space",
-    choices: ["page", "space", "heart", "spot"],
+    id: 7,
+    lyric: "I'm a nightmare dressed like a daydream",
+    missingWord: "nightmare",
+    choices: ["nightmare", "dream", "fantasy", "reality"],
     songTitle: "Blank Space",
-    album: "1989"
+    album: "1989",
+    difficulty: 1
   },
   {
-    lyric: "We are never ever ever getting back together",
-    missingWord: "together",
-    choices: ["together", "closer", "better", "stronger"],
-    songTitle: "We Are Never Ever Getting Back Together",
-    album: "Red"
+    id: 8,
+    lyric: "We're happy, free, confused, and lonely at the same time",
+    missingWord: "confused",
+    choices: ["confused", "happy", "sad", "angry"],
+    songTitle: "22",
+    album: "Red",
+    difficulty: 1
   },
   {
-    lyric: "Cause the players gonna play play play play play",
-    missingWord: "play",
-    choices: ["hate", "play", "run", "dance"],
+    id: 9,
+    lyric: "I'm shining like fireworks over your sad empty town",
+    missingWord: "fireworks",
+    choices: ["fireworks", "stars", "moon", "sun"],
+    songTitle: "Dear John",
+    album: "Speak Now",
+    difficulty: 1
+  },
+  {
+    id: 10,
+    lyric: "All too well",
+    missingWord: "well",
+    choices: ["well", "good", "fine", "nice"],
+    songTitle: "All Too Well",
+    album: "Red",
+    difficulty: 1
+  },
+
+  // Normal (Difficulty 2)
+  {
+    id: 11,
+    lyric: "I'm a nightmare dressed like a daydream",
+    missingWord: "nightmare",
+    choices: ["nightmare", "dream", "fantasy", "reality"],
+    songTitle: "Blank Space",
+    album: "1989",
+    difficulty: 2
+  },
+  {
+    id: 12,
+    lyric: "We're happy, free, confused, and lonely at the same time",
+    missingWord: "confused",
+    choices: ["confused", "happy", "sad", "angry"],
+    songTitle: "22",
+    album: "Red",
+    difficulty: 2
+  },
+  {
+    id: 13,
+    lyric: "I'm shining like fireworks over your sad empty town",
+    missingWord: "fireworks",
+    choices: ["fireworks", "stars", "moon", "sun"],
+    songTitle: "Dear John",
+    album: "Speak Now",
+    difficulty: 2
+  },
+  {
+    id: 14,
+    lyric: "All too well",
+    missingWord: "well",
+    choices: ["well", "good", "fine", "nice"],
+    songTitle: "All Too Well",
+    album: "Red",
+    difficulty: 2
+  },
+  {
+    id: 15,
+    lyric: "I'm the problem, it's me",
+    missingWord: "problem",
+    choices: ["problem", "answer", "solution", "question"],
+    songTitle: "Anti-Hero",
+    album: "Midnights",
+    difficulty: 2
+  },
+  {
+    id: 16,
+    lyric: "Meet me at midnight",
+    missingWord: "midnight",
+    choices: ["midnight", "sunset", "dawn", "dusk"],
+    songTitle: "Lavender Haze",
+    album: "Midnights",
+    difficulty: 2
+  },
+  {
+    id: 17,
+    lyric: "We never go out of style",
+    missingWord: "style",
+    choices: ["style", "fashion", "trend", "mode"],
+    songTitle: "Style",
+    album: "1989",
+    difficulty: 2
+  },
+  {
+    id: 18,
+    lyric: "I'm feeling 22",
+    missingWord: "22",
+    choices: ["22", "23", "24", "25"],
+    songTitle: "22",
+    album: "Red",
+    difficulty: 2
+  },
+  {
+    id: 19,
+    lyric: "Shake it off",
+    missingWord: "shake",
+    choices: ["shake", "dance", "move", "jump"],
     songTitle: "Shake It Off",
-    album: "1989"
+    album: "1989",
+    difficulty: 2
   },
   {
-    lyric: "Look what you made me do, look what you just made me do",
-    missingWord: "made",
-    choices: ["made", "forced", "told", "got"],
-    songTitle: "Look What You Made Me Do",
-    album: "reputation"
+    id: 20,
+    lyric: "Welcome to New York",
+    missingWord: "New York",
+    choices: ["New York", "Los Angeles", "Chicago", "Miami"],
+    songTitle: "Welcome to New York",
+    album: "1989",
+    difficulty: 2
+  },
+
+  // Hard (Difficulty 3)
+  {
+    id: 21,
+    lyric: "I'm a nightmare dressed like a daydream",
+    missingWord: "nightmare",
+    choices: ["nightmare", "dream", "fantasy", "reality"],
+    songTitle: "Blank Space",
+    album: "1989",
+    difficulty: 3
+  },
+  {
+    id: 22,
+    lyric: "We're happy, free, confused, and lonely at the same time",
+    missingWord: "confused",
+    choices: ["confused", "happy", "sad", "angry"],
+    songTitle: "22",
+    album: "Red",
+    difficulty: 3
+  },
+  {
+    id: 23,
+    lyric: "I'm shining like fireworks over your sad empty town",
+    missingWord: "fireworks",
+    choices: ["fireworks", "stars", "moon", "sun"],
+    songTitle: "Dear John",
+    album: "Speak Now",
+    difficulty: 3
+  },
+  {
+    id: 24,
+    lyric: "All too well",
+    missingWord: "well",
+    choices: ["well", "good", "fine", "nice"],
+    songTitle: "All Too Well",
+    album: "Red",
+    difficulty: 3
+  },
+  {
+    id: 25,
+    lyric: "I'm the problem, it's me",
+    missingWord: "problem",
+    choices: ["problem", "answer", "solution", "question"],
+    songTitle: "Anti-Hero",
+    album: "Midnights",
+    difficulty: 3
+  },
+  {
+    id: 26,
+    lyric: "Meet me at midnight",
+    missingWord: "midnight",
+    choices: ["midnight", "sunset", "dawn", "dusk"],
+    songTitle: "Lavender Haze",
+    album: "Midnights",
+    difficulty: 3
+  },
+  {
+    id: 27,
+    lyric: "We never go out of style",
+    missingWord: "style",
+    choices: ["style", "fashion", "trend", "mode"],
+    songTitle: "Style",
+    album: "1989",
+    difficulty: 3
+  },
+  {
+    id: 28,
+    lyric: "I'm feeling 22",
+    missingWord: "22",
+    choices: ["22", "23", "24", "25"],
+    songTitle: "22",
+    album: "Red",
+    difficulty: 3
+  },
+  {
+    id: 29,
+    lyric: "Shake it off",
+    missingWord: "shake",
+    choices: ["shake", "dance", "move", "jump"],
+    songTitle: "Shake It Off",
+    album: "1989",
+    difficulty: 3
+  },
+  {
+    id: 30,
+    lyric: "Welcome to New York",
+    missingWord: "New York",
+    choices: ["New York", "Los Angeles", "Chicago", "Miami"],
+    songTitle: "Welcome to New York",
+    album: "1989",
+    difficulty: 3
   }
 ]; 

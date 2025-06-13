@@ -5,6 +5,10 @@ import { Box, Button, Container, Typography, Paper } from '@mui/material';
 function Home() {
   const navigate = useNavigate();
 
+  const startQuiz = (difficulty) => {
+    navigate('/quiz', { state: { difficulty } });
+  };
+
   return (
     <Container maxWidth="sm">
       <Box
@@ -34,27 +38,47 @@ function Home() {
             Test your Swiftie knowledge! Complete the lyrics from Taylor's songs.
           </Typography>
 
-          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, mb: 4 }}>
             <Button
               variant="contained"
-              color="primary"
+              color="success"
               size="large"
-              onClick={() => navigate('/quiz')}
-              sx={{ fontSize: '1.2rem', py: 1.5, px: 4 }}
+              onClick={() => startQuiz('1')}
+              sx={{ fontSize: '1.2rem', py: 1.5 }}
             >
-              Start Quiz
+              Easy Quiz - The BF or Dad Mode
             </Button>
             
             <Button
-              variant="outlined"
-              color="secondary"
+              variant="contained"
+              color="warning"
               size="large"
-              onClick={() => navigate('/leaderboard')}
-              sx={{ fontSize: '1.2rem', py: 1.5, px: 4 }}
+              onClick={() => startQuiz('2')}
+              sx={{ fontSize: '1.2rem', py: 1.5 }}
             >
-              Leaderboard
+              Normal Quiz - Casual Listener Mode
+            </Button>
+            
+            <Button
+              variant="contained"
+              color="error"
+              size="large"
+              onClick={() => startQuiz('3')}
+              sx={{ fontSize: '1.2rem', py: 1.5 }}
+            >
+              Hard Quiz - Legendary Swiftie Mode
             </Button>
           </Box>
+
+          <Button
+            variant="outlined"
+            color="secondary"
+            size="large"
+            onClick={() => navigate('/leaderboard')}
+            sx={{ fontSize: '1.2rem', py: 1.5, px: 4 }}
+          >
+            View Leaderboard
+          </Button>
         </Paper>
       </Box>
     </Container>

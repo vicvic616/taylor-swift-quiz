@@ -14,7 +14,7 @@ function Leaderboard() {
   useEffect(() => {
     const fetchScores = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/leaderboard`);
+        const response = await axios.get(`${API_URL}/api/quiz/leaderboard`);
         setScores(response.data);
         setLoading(false);
       } catch (error) {

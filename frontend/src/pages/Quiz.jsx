@@ -1,35 +1,72 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Box, Button, Container, Typography, Paper, LinearProgress } from '@mui/material';
 import axios from 'axios';
 
+// Use localhost for development, fall back to production URL
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+console.log('Using API URL:', API_URL); // Debug log
 
 function Quiz() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [startTime] = useState(Date.now());
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showResult, setShowResult] = useState(false);
 
+  const difficulty = location.state?.difficulty || '2'; // Default to normal if no difficulty set
+
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await axios.get(`${API_URL}/api/questions`);
+        console.log('Fetching questions from:', `${API_URL}/api/quiz/questions?difficulty=${difficulty}`); // Debug log
+        const response = await axios.get(`${API_URL}/api/quiz/questions`, {
+          params: { 
+            difficulty: difficulty,
+            count: '10'
+          }
+        });
+        console.log('Questions received:', response.data); // Debug log
+        if (!Array.isArray(response.data) || response.data.length === 0) {
+          throw new Error('No questions available for this difficulty level');
+        }
         setQuestions(response.data);
         setLoading(false);
       } catch (error) {
         console.error('Error fetching questions:', error);
+        setError(error.message);
         setLoading(false);
       }
     };
 
     fetchQuestions();
-  }, []);
+  }, [difficulty]);
+
+  // Show error state
+  if (error) {
+    return (
+      <Container>
+        <Box sx={{ width: '100%', mt: 4, textAlign: 'center' }}>
+          <Typography color="error" variant="h6">
+            Error loading questions: {error}
+          </Typography>
+          <Button 
+            variant="contained" 
+            onClick={() => window.location.reload()}
+            sx={{ mt: 2 }}
+          >
+            Try Again
+          </Button>
+        </Box>
+      </Container>
+    );
+  }
 
   const currentQuestion = questions[currentQuestionIndex];
   const progress = (currentQuestionIndex / questions.length) * 100;
@@ -38,13 +75,14 @@ function Quiz() {
     if (selectedAnswer !== null) return; // Prevent multiple answers
 
     setSelectedAnswer(answer);
-    if (answer === currentQuestion.missingWord) {
-      setScore(score + 1);
-    }
-
+    const isCorrect = answer === currentQuestion.missingWord;
     setShowResult(true);
     
     setTimeout(() => {
+      if (isCorrect) {
+        setScore(score + 1);
+      }
+      
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(null);
@@ -53,7 +91,7 @@ function Quiz() {
         const timeInSeconds = Math.floor((Date.now() - startTime) / 1000);
         navigate('/result', { 
           state: { 
-            score, 
+            score: isCorrect ? score + 1 : score, 
             totalQuestions: questions.length,
             timeInSeconds 
           } 
@@ -77,21 +115,8 @@ function Quiz() {
   }
 
   const getLyricDisplay = () => {
-    const parts = currentQuestion.lyric.split(currentQuestion.missingWord);
-    return (
-      <>
-        {parts[0]}
-        <span style={{ 
-          backgroundColor: '#ffeb3b', 
-          padding: '0 8px',
-          borderRadius: '4px',
-          margin: '0 4px'
-        }}>
-          _____
-        </span>
-        {parts[1]}
-      </>
-    );
+    if (!currentQuestion) return '';
+    return currentQuestion.lyric.replace('_____', '_____');
   };
 
   return (
@@ -115,7 +140,7 @@ function Quiz() {
           </Typography>
 
           <Typography variant="subtitle1" sx={{ mb: 2, color: 'text.secondary' }}>
-            Song: {currentQuestion.songTitle}
+            Song: {currentQuestion.song} from {currentQuestion.album}
           </Typography>
 
           <Box sx={{ display: 'grid', gap: 2 }}>

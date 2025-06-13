@@ -22,7 +22,7 @@ function Result() {
     if (!playerName.trim()) return;
 
     try {
-      await axios.post(`${API_URL}/api/scores`, {
+      await axios.post(`${API_URL}/api/quiz/scores`, {
         playerName: playerName.trim(),
         score,
         timeInSeconds

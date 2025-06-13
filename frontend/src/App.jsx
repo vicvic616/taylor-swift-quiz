@@ -5,7 +5,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
 import Result from './pages/Result';
-import Leaderboard from './pages/Leaderboard';
+import Leaderboard from './components/Leaderboard';
+import Debug from './pages/Debug';
 
 const theme = createTheme({
   palette: {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/quiz" element={<Quiz />} />
           <Route path="/result" element={<Result />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/debug" element={<Debug />} />
         </Routes>
       </Router>
     </ThemeProvider>
